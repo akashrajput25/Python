@@ -26,11 +26,16 @@ arr_courses =[
     }
 ]
 
-course = courses.find_one()
-print(course,"\n")
+courses.update({
+    'course' : 'Java'
+},
+{
+    '$set' : {
+        'course' : 'Advanced Java'
+    }
+},multi = True)
 
-courses = courses.find({'author':"Akash" ,
-                        'rating':{'$gt': 0}})
 
+courses = courses.find({'course' : 'Advanced Java'})
 for course in courses:
     pprint.pprint(course)

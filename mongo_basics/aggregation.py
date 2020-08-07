@@ -26,11 +26,16 @@ arr_courses =[
     }
 ]
 
-course = courses.find_one()
-print(course,"\n")
+print(list(courses.aggregate([
+    {
+    "$group" : 
+        {
+        '_id' : '$author' ,
+        'rating' :
+            {
+                '$avg' : '$rating'
+            }
+        }
+    }
+])))
 
-courses = courses.find({'author':"Akash" ,
-                        'rating':{'$gt': 0}})
-
-for course in courses:
-    pprint.pprint(course)

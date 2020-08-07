@@ -26,11 +26,22 @@ arr_courses =[
     }
 ]
 
-course = courses.find_one()
-print(course,"\n")
 
-courses = courses.find({'author':"Akash" ,
-                        'rating':{'$gt': 0}})
+'''
+print(courses.find({'author':'Akash'}).count())
+courses.delete_one({
+    'author': 'Akash'
+})
 
-for course in courses:
-    pprint.pprint(course)
+
+print(courses.find({'author':'Akash'}).count())
+
+'''
+
+print(courses.find({'author':'Arihant'}).count())
+courses.delete_many({
+    'author': 'Arihant'
+})
+
+
+print(courses.find({'author':'Arihant'}).count())

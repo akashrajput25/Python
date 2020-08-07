@@ -5,32 +5,32 @@ client = MongoClient('mongodb://localhost:27017')
 db = client.test_database
 courses = db.course
 
+courses.create_index(
+    [('study' , 1 )]
+,unique = True)
+
 arr_courses =[
     {
-        'author' : 'Akash' ,
+        'author' : 'SK Verma' ,
         'course' : 'MongoDb',
         'price' : '100',
         'rating' : 5
     },
     {
-        'author' : 'Sritam' ,
+        'author' : 'Sritam K Das' ,
         'course' : 'Python',
         'price' : '200',
         'rating' : 5
     },
     {
-        'author' : 'Arihant' ,
+        'author' : 'Orielly' ,
         'course' : 'Java',
         'price' : '150',
         'rating' : 4
     }
 ]
 
-course = courses.find_one()
-print(course,"\n")
+results = courses.insert_many(arr_courses)
 
-courses = courses.find({'author':"Akash" ,
-                        'rating':{'$gt': 0}})
-
-for course in courses:
-    pprint.pprint(course)
+for object_id in results.inserted_ids:
+    print('course added and course id is', str(object_id))
