@@ -1,7 +1,11 @@
 from django.shortcuts import render,HttpResponse
 
 def index(request):
-    return HttpResponse('This is homepage')
+    context ={
+        'variable' : "text here",
+        'variable1' : 'hola'
+    }
+    return render(request,'index.html',context)
 
 def about(request):
     return HttpResponse('This is aboutpage')
@@ -9,5 +13,5 @@ def about(request):
 def services(request):
     return HttpResponse('This is service page')
 
-def about(request):
-    return HttpResponse('This is about page')
+def contact(request):
+    return HttpResponse('This is contact page')
