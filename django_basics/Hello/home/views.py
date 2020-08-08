@@ -15,3 +15,7 @@ def services(request):
 
 def contact(request):
     return HttpResponse('This is contact page')
+
+def skills(request):
+    return HttpResponse('This is skills page')
+
