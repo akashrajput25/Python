@@ -1,6 +1,5 @@
 from tkinter import *
 from MySQLdb import *
-from Tinkler_switch import *
 def login():
     win1 = Tk ()
     win1.configure(bg = '#cccccc')
@@ -12,6 +11,7 @@ def login():
         curobj.execute('use GUI_APP;')
         curobj.execute("SELECT uname, pwd FROM signup")
         signup = curobj.fetchall()
+        print(signup)
         #curobj.execute('Create database GUI_APP;')
 
         name = uname.get()
@@ -41,4 +41,5 @@ def login():
 
     sbtn = Button(win1 , text='Submit',padx=45,bg='#cccccc',command = submit).grid(row=10 ,column=0, pady=20)
     ebtn = Button(win1 , text ='Exit',padx=60,bg='#fccccc',command = exit).grid(row=10 ,column=1, pady=20)
+    
     win1. mainloop ()

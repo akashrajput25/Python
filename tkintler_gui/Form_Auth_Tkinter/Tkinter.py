@@ -1,6 +1,6 @@
 from tkinter import *
 from MySQLdb import *
-from Tinkler_switch import *
+from tkintler_gui.Form_Auth_Tkinter.Tinkler_switch import *
 def ok():
 
     conobj = connect('localhost','root','password123')
