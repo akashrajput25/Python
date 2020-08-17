@@ -8,7 +8,6 @@ for item in ['Akash' , 'Rajput' , 'Jhon']:
 for item in range (1,300 ,2):
     print(item)
 '''
-
 #Task8
 
 prices = [10 , 20 , 30]
