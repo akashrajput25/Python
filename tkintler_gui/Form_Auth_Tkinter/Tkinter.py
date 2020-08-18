@@ -15,6 +15,8 @@ def ok():
     
     if curobj.execute('insert into signup values("' +uname.get()+ '","' +eid.get()+ '","' +var.get()+ '","' +pwd.get()+ '");') :
         Label(win , text = "Thanks for signing up, now login", font=('bold',10),fg='blue').pack()
+        
+    conobj.commit()
     curobj.close()
     conobj.close()
 

@@ -1,6 +1,9 @@
 from tkinter import *
 from MySQLdb import *
+from tkintler_gui.Form_Auth_Tkinter.popup import popout
+
 def login():
+
     win1 = Tk ()
     win1.configure(bg = '#cccccc')
     win1 . title ( 'Please login here')
@@ -11,7 +14,6 @@ def login():
         curobj.execute('use GUI_APP;')
         curobj.execute("SELECT uname, pwd FROM signup")
         signup = curobj.fetchall()
-        print(signup)
         #curobj.execute('Create database GUI_APP;')
 
         name = uname.get()
@@ -20,8 +22,12 @@ def login():
         for data in signup:
             
             if str(data[0]) == name and str(data[1]) == password:
-                Label(win1 , text ="Thank you for logging in",font = ('bold',12),fg='#fff',bg = '#fff').grid(row = 11, column =0)
-        
+                popout()
+                win1.destroy()
+            else:
+                Label(win1, text ="No records found, try signing up",font = ('bold',10),fg='#ff0000',bg = '#cccccc').grid(row = 11, column =0)
+
+
         curobj.close()
         conobj.close()
 
@@ -41,5 +47,4 @@ def login():
 
     sbtn = Button(win1 , text='Submit',padx=45,bg='#cccccc',command = submit).grid(row=10 ,column=0, pady=20)
     ebtn = Button(win1 , text ='Exit',padx=60,bg='#fccccc',command = exit).grid(row=10 ,column=1, pady=20)
-    
     win1. mainloop ()
